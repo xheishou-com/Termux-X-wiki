@@ -11,6 +11,16 @@ steps:
     displayName: '构建 VitePress 站点'
     nodeVersion: 18
     commands:
+      # 尝试手动升级 Node.js，以防环境默认版本过低
+      - set -e
+      - echo "Current Node version:"
+      - node -v
+      - echo "Installing Node.js 18 via n..."
+      - npm install -g n
+      - n 18
+      - hash -r
+      - echo "New Node version:"
+      - node -v
       - npm install
       - npm run docs:build
     artifacts:
@@ -22,11 +32,7 @@ steps:
     displayName: '部署到 Gitee Pages'
     dependencies:
       - build_site
-    # 注意：使用 Gitee Go 进行 Pages 部署通常需要以下配置
-    # 1. 确保已开通 Gitee Pages 服务
-    # 2. 此步骤会尝试将构建产物部署到 Pages
-    # 如果您使用的是 Gitee Go 的官方 Pages 插件，请在网页端流水线配置中确认插件版本和参数
-    # 以下是一个通用的 Shell 部署脚本示例，适用于手动配置了 GITEE_TOKEN 的情况
+    # 如果自动部署失败，请手动配置 GITEE_TOKEN 并取消注释以下 block
     # commands:
     #   - cd docs/.vitepress/dist
     #   - git init
