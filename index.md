@@ -2,14 +2,14 @@
 layout: home
 
 hero:
-  name: "ZeroTermux Wiki"
-  text: "一个为 ZeroTermux 打造的知识库"
-  tagline: 在这里找到你需要的全部信息。
+  name: "Termux-X Wiki"
+  text: "Termux-X 官方文档与知识库"
+  tagline: 免Root Kali NetHunter | AI 智能核心 | 移动渗透测试神器
   actions:
     - theme: brand
       text: 快速开始
       link: /guide/getting-started
     - theme: alt
-      text: 在 GitHub 上查看
-      link: https://github.com/ixcmstudio/zerotermux-wiki
+      text: 访问 Gitee 仓库
+      link: https://gitee.com/xheishou/termux-x-wiki
 ---
