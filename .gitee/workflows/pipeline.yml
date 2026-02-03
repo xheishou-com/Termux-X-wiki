@@ -6,29 +6,35 @@ triggers:
       - master
 
 steps:
-  # Gitee Go 目前对自定义镜像支持有限，还是需要回退到 shell 脚本手动安装 Node 18
   - step: build@nodejs
     name: build_site
     displayName: '构建 VitePress 站点'
-    nodeVersion: 14.16.0 # 这是 Gitee 默认版本，我们必须手动升级
+    nodeVersion: 14.16.0
     commands:
-      # 手动升级 Node.js 到 18.x
+      # 清理环境
       - set -e
-      - echo "Checking initial Node version..."
-      - node -v
+      - rm -rf node_modules package-lock.json
+
+      # 手动安装 Node.js 18
       - echo "Downloading Node.js 18..."
-      - wget https://nodejs.org/dist/v18.19.0/node-v18.19.0-linux-x64.tar.xz
+      - wget -q https://nodejs.org/dist/v18.19.0/node-v18.19.0-linux-x64.tar.xz
       - tar -xf node-v18.19.0-linux-x64.tar.xz
-      # 注意：直接修改 PATH 可能在子 shell 中不生效，我们需要显式调用新版 node
+      
+      # 设置环境变量，确保后续命令优先使用新版 Node
       - export NODE_HOME=$PWD/node-v18.19.0-linux-x64
       - export PATH=$NODE_HOME/bin:$PATH
-      - echo "Verifying new Node version..."
+      
+      # 验证版本
+      - echo "Node version:"
       - node -v
+      - echo "NPM version:"
       - npm -v
-      # 强制使用新版 node 运行 npm install
-      - $NODE_HOME/bin/npm install
-      # 强制使用新版 node 运行构建
-      - $NODE_HOME/bin/npm run docs:build
+
+      # 安装依赖 (显式使用新版 npm)
+      - npm install
+
+      # 执行构建 (直接调用 vitepress 二进制文件，避免 npm run 的 shell 环境问题)
+      - ./node_modules/.bin/vitepress build docs
     artifacts:
       - name: dist
         path: docs/.vitepress/dist
@@ -38,13 +44,3 @@ steps:
     displayName: '部署到 Gitee Pages'
     dependencies:
       - build_site
-    # 如果自动部署失败，请手动配置 GITEE_TOKEN 并取消注释以下 block
-    # commands:
-    #   - cd docs/.vitepress/dist
-    #   - git init
-    #   - git checkout -b pages
-    #   - git add .
-    #   - git config user.name "Gitee Go Bot"
-    #   - git config user.email "bot@gitee.com"
-    #   - git commit -m "Auto deploy"
-    #   - git push -f "https://${GITEE_TOKEN}@gitee.com/xheishou/termux-x-wiki.git" pages
