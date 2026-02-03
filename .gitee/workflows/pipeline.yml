@@ -6,20 +6,37 @@ triggers:
       - master
 
 steps:
-  - name: build_site
+  # Gitee Go 自定义镜像支持可能有问题，回退到使用官方推荐的 build@nodejs 插件
+  # 但使用一个 trick：通过手动下载 Node 二进制并强制覆盖 PATH
+  - step: build@nodejs
+    name: build_site
     displayName: '构建 VitePress 站点'
-    # 使用官方 Node.js 18 镜像
-    image: node:18
+    nodeVersion: 14.16.0 # 保持默认，我们后面手动覆盖
     commands:
-      # 1. 强制清理（可选，视 CI 环境是否持久化而定）
+      # 1. 彻底清理
       - rm -rf node_modules package-lock.json dist
 
-      # 2. 安装依赖
-      - npm install
+      # 2. 手动下载 Node.js 18.19.0 二进制包
+      - echo "Downloading Node.js 18..."
+      - wget -q https://nodejs.org/dist/v18.19.0/node-v18.19.0-linux-x64.tar.xz
+      - tar -xf node-v18.19.0-linux-x64.tar.xz
+      
+      # 3. 设置绝对路径变量
+      - export NODE_DIR=$PWD/node-v18.19.0-linux-x64/bin
+      
+      # 4. 验证版本 (确保我们使用的是新版)
+      - echo "Using Node version:"
+      - $NODE_DIR/node -v
+      - echo "Using NPM version:"
+      - $NODE_DIR/npm -v
 
-      # 3. 执行构建 (直接调用 vitepress 二进制文件)
-      # 避开 npm run 可能存在的环境劫持
-      - ./node_modules/.bin/vitepress build docs
+      # 5. 使用绝对路径的 npm 安装依赖
+      - $NODE_DIR/npm install
+
+      # 6. 使用绝对路径的 node 直接运行 vitepress 脚本
+      # 这里不走 npm run，直接用新版 node 解析 vitepress 的 JS 文件
+      - $NODE_DIR/node node_modules/vitepress/bin/vitepress.js build docs
+
     artifacts:
       - name: dist
         path: docs/.vitepress/dist
