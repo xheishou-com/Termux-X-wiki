@@ -8,19 +8,18 @@ triggers:
 steps:
   - name: build_site
     displayName: '构建 VitePress 站点'
-    # 不再使用 step: build@nodejs 插件，因为它强制使用 Node 14
-    # 直接指定 Node.js 18 的 Docker 镜像作为构建环境
+    # 使用官方 Node.js 18 镜像
     image: node:18
     commands:
-      - set -e
-      - echo "Current Environment Node Version:"
-      - node -v
-      - echo "Current NPM Version:"
-      - npm -v
-      - echo "Installing Dependencies..."
+      # 1. 强制清理（可选，视 CI 环境是否持久化而定）
+      - rm -rf node_modules package-lock.json dist
+
+      # 2. 安装依赖
       - npm install
-      - echo "Building Site..."
-      - npm run docs:build
+
+      # 3. 执行构建 (直接调用 vitepress 二进制文件)
+      # 避开 npm run 可能存在的环境劫持
+      - ./node_modules/.bin/vitepress build docs
     artifacts:
       - name: dist
         path: docs/.vitepress/dist
@@ -30,13 +29,3 @@ steps:
     displayName: '部署到 Gitee Pages'
     dependencies:
       - build_site
-    # 如果自动部署失败，请手动配置 GITEE_TOKEN 并取消注释以下 block
-    # commands:
-    #   - cd docs/.vitepress/dist
-    #   - git init
-    #   - git checkout -b pages
-    #   - git add .
-    #   - git config user.name "Gitee Go Bot"
-    #   - git config user.email "bot@gitee.com"
-    #   - git commit -m "Auto deploy"
-    #   - git push -f "https://${GITEE_TOKEN}@gitee.com/xheishou/termux-x-wiki.git" pages
