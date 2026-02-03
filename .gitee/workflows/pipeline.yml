@@ -6,35 +6,21 @@ triggers:
       - master
 
 steps:
-  - step: build@nodejs
-    name: build_site
+  - name: build_site
     displayName: '构建 VitePress 站点'
-    nodeVersion: 14.16.0
+    # 不再使用 step: build@nodejs 插件，因为它强制使用 Node 14
+    # 直接指定 Node.js 18 的 Docker 镜像作为构建环境
+    image: node:18
     commands:
-      # 清理环境
       - set -e
-      - rm -rf node_modules package-lock.json
-
-      # 手动安装 Node.js 18
-      - echo "Downloading Node.js 18..."
-      - wget -q https://nodejs.org/dist/v18.19.0/node-v18.19.0-linux-x64.tar.xz
-      - tar -xf node-v18.19.0-linux-x64.tar.xz
-      
-      # 设置环境变量，确保后续命令优先使用新版 Node
-      - export NODE_HOME=$PWD/node-v18.19.0-linux-x64
-      - export PATH=$NODE_HOME/bin:$PATH
-      
-      # 验证版本
-      - echo "Node version:"
+      - echo "Current Environment Node Version:"
       - node -v
-      - echo "NPM version:"
+      - echo "Current NPM Version:"
       - npm -v
-
-      # 安装依赖 (显式使用新版 npm)
+      - echo "Installing Dependencies..."
       - npm install
-
-      # 执行构建 (直接调用 vitepress 二进制文件，避免 npm run 的 shell 环境问题)
-      - ./node_modules/.bin/vitepress build docs
+      - echo "Building Site..."
+      - npm run docs:build
     artifacts:
       - name: dist
         path: docs/.vitepress/dist
@@ -44,3 +30,13 @@ steps:
     displayName: '部署到 Gitee Pages'
     dependencies:
       - build_site
+    # 如果自动部署失败，请手动配置 GITEE_TOKEN 并取消注释以下 block
+    # commands:
+    #   - cd docs/.vitepress/dist
+    #   - git init
+    #   - git checkout -b pages
+    #   - git add .
+    #   - git config user.name "Gitee Go Bot"
+    #   - git config user.email "bot@gitee.com"
+    #   - git commit -m "Auto deploy"
+    #   - git push -f "https://${GITEE_TOKEN}@gitee.com/xheishou/termux-x-wiki.git" pages
