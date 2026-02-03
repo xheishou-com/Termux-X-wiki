@@ -6,20 +6,11 @@ triggers:
       - master
 
 steps:
-  - step: build@nodejs
-    name: build_site
+  - name: build_site
     displayName: '构建 VitePress 站点'
-    nodeVersion: 18
+    # 尝试直接使用 Node.js 18 的 Docker 镜像，避开 Gitee Go 默认插件的 Node 14 限制
+    image: node:18
     commands:
-      # 尝试手动升级 Node.js，以防环境默认版本过低
-      - set -e
-      - echo "Current Node version:"
-      - node -v
-      - echo "Installing Node.js 18 via n..."
-      - npm install -g n
-      - n 18
-      - hash -r
-      - echo "New Node version:"
       - node -v
       - npm install
       - npm run docs:build
