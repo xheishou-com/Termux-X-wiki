@@ -19,13 +19,16 @@ steps:
       - echo "Downloading Node.js 18..."
       - wget https://nodejs.org/dist/v18.19.0/node-v18.19.0-linux-x64.tar.xz
       - tar -xf node-v18.19.0-linux-x64.tar.xz
-      - export PATH=$PWD/node-v18.19.0-linux-x64/bin:$PATH
+      # 注意：直接修改 PATH 可能在子 shell 中不生效，我们需要显式调用新版 node
+      - export NODE_HOME=$PWD/node-v18.19.0-linux-x64
+      - export PATH=$NODE_HOME/bin:$PATH
       - echo "Verifying new Node version..."
       - node -v
       - npm -v
-      # 开始构建
-      - npm install
-      - npm run docs:build
+      # 强制使用新版 node 运行 npm install
+      - $NODE_HOME/bin/npm install
+      # 强制使用新版 node 运行构建
+      - $NODE_HOME/bin/npm run docs:build
     artifacts:
       - name: dist
         path: docs/.vitepress/dist
