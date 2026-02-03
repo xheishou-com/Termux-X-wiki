@@ -6,12 +6,24 @@ triggers:
       - master
 
 steps:
-  - name: build_site
+  # Gitee Go 目前对自定义镜像支持有限，还是需要回退到 shell 脚本手动安装 Node 18
+  - step: build@nodejs
+    name: build_site
     displayName: '构建 VitePress 站点'
-    # 尝试直接使用 Node.js 18 的 Docker 镜像，避开 Gitee Go 默认插件的 Node 14 限制
-    image: node:18
+    nodeVersion: 14.16.0 # 这是 Gitee 默认版本，我们必须手动升级
     commands:
+      # 手动升级 Node.js 到 18.x
+      - set -e
+      - echo "Checking initial Node version..."
       - node -v
+      - echo "Downloading Node.js 18..."
+      - wget https://nodejs.org/dist/v18.19.0/node-v18.19.0-linux-x64.tar.xz
+      - tar -xf node-v18.19.0-linux-x64.tar.xz
+      - export PATH=$PWD/node-v18.19.0-linux-x64/bin:$PATH
+      - echo "Verifying new Node version..."
+      - node -v
+      - npm -v
+      # 开始构建
       - npm install
       - npm run docs:build
     artifacts:
