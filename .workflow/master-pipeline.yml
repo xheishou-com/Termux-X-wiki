@@ -31,13 +31,14 @@ stages:
             set -e
             set +x
             echo "DEPLOY_PAGES: start"
-            USER="${PAGES_USER:-xheishou}"
             TOKEN="${PAGES_TOKEN:-}"
             TOKEN="$(printf "%s" "$TOKEN" | tr -d '\r\n')"
             if [ -z "$TOKEN" ]; then
               echo "Missing PAGES_TOKEN. 请在 Gitee Go -> 通用变量 中添加 PAGES_TOKEN(勾选密文) 和 PAGES_USER。"
               exit 1
             fi
+            USER_FROM_TOKEN="$(wget -qO- "https://gitee.com/api/v5/user?access_token=${TOKEN}" | ./node-v18.19.0-linux-x64/bin/node -e "const fs=require('fs'); try{const j=JSON.parse(fs.readFileSync(0,'utf8')); process.stdout.write(j.login||j.name||'');}catch(e){}" 2>/dev/null || true)"
+            USER="${PAGES_USER:-${USER_FROM_TOKEN:-xheishou}}"
             echo "DEPLOY_PAGES: token_present=1 user=${USER}"
             DIST_TMP="$(mktemp -d)"
             cp -a docs/.vitepress/dist/. "$DIST_TMP"/
@@ -54,7 +55,7 @@ stages:
             BASIC="$(printf "%s" "${USER}:${TOKEN}" | base64 | tr -d '\n')"
             git config --global credential.helper store
             echo "https://${USER}:${TOKEN}@gitee.com/xheishou/termux-x-wiki.git" > ~/.git-credentials
-            git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages || git push -f origin pages
+            git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages || git push -f origin pages || (git remote set-url origin "https://gitee.com/xheishou/termux-x-wiki.git?access_token=${TOKEN}" && git push -f origin pages)
             echo "DEPLOY_PAGES: done"
             set -x
         # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
