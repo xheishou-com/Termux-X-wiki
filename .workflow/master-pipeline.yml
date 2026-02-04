@@ -35,7 +35,7 @@ stages:
           - touch .nojekyll
           - git add -A
           - git commit -m "Deploy pages"
-          - git remote set-url origin "https://oauth2:${TOKEN}@gitee.com/xheishou/termux-x-wiki.git"
+          - git remote set-url origin "https://xheishou:${TOKEN}@gitee.com/xheishou/termux-x-wiki.git"
           - git push -f origin pages
         # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
         artifacts:
