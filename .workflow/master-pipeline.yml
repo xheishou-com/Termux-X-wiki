@@ -1,6 +1,9 @@
 version: '1.0'
 name: master-pipeline
 displayName: MasterPipeline
+variables:
+  global:
+    - GITEE_TOKEN
 stages:
   - stage: 
     name: compile
@@ -22,7 +25,8 @@ stages:
           - ./node-v18.19.0-linux-x64/bin/node node_modules/vitepress/bin/vitepress.js build docs
           - test -d docs/.vitepress/dist
           - set +x
-          - TOKEN="${GITEE_TOKEN:-${GITEE_ACCESS_TOKEN:-${GITEE_PERSONAL_ACCESS_TOKEN:-}}}"
+          - USER="${GITEE_TOKEN_USERNAME:-xheishou}"
+          - TOKEN="${GITEE_TOKEN_PASSWORD:-${GITEE_TOKEN:-${GITEE_ACCESS_TOKEN:-${GITEE_PERSONAL_ACCESS_TOKEN:-}}}}"
           - TOKEN="$(printf "%s" "$TOKEN" | tr -d '\r\n')"
           - test -n "$TOKEN" || (echo "Missing Gitee token. Please set pipeline secret variable GITEE_TOKEN (or GITEE_ACCESS_TOKEN)." && exit 1)
           - DIST_TMP="$(mktemp -d)"
@@ -37,7 +41,7 @@ stages:
           - git add -A
           - git commit -m "Deploy pages"
           - git remote set-url origin "https://gitee.com/xheishou/termux-x-wiki.git"
-          - BASIC="$(printf "%s" "xheishou:${TOKEN}" | base64 | tr -d '\n')"
+          - BASIC="$(printf "%s" "${USER}:${TOKEN}" | base64 | tr -d '\n')"
           - git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages
         # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
         artifacts:

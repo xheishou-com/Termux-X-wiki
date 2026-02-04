@@ -1,6 +1,9 @@
 version: '1.0'
 name: branch-pipeline
 displayName: BranchPipeline
+variables:
+  global:
+    - GITEE_TOKEN
 stages:
   - stage: 
     name: compile
