@@ -3,7 +3,6 @@ image: node:18-bullseye
 pages:
   stage: deploy
   variables:
-    NODE_ENV: production
     VITEPRESS_BASE: "/termux-x-wiki/"
   cache:
     key:

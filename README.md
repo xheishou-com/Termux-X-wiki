@@ -1,11 +1,11 @@
 # Termux-X Wiki
 
-[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://xheishou.gitee.io/termux-x-wiki/)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://termux-x.gitlab.io/termux-x-wiki/)
 [![Powered by VitePress](https://img.shields.io/badge/Powered%20by-VitePress-blueviolet)](https://vitepress.dev/)
 
-欢迎来到 Termux-X Wiki 的官方源码仓库！本文档库旨在为 [Termux-X](https://gitee.com/xheishou/termux-x-wiki) 用户提供全面、准确的指南、教程和常见问题解答。
+欢迎来到 Termux-X Wiki 的官方源码仓库！本文档库旨在为 [Termux-X](https://gitlab.com/termux-x/termux-x-wiki) 用户提供全面、准确的指南、教程和常见问题解答。
 
-**在线访问 👉 [https://xheishou.gitee.io/termux-x-wiki/](https://xheishou.gitee.io/termux-x-wiki/)**
+**在线访问 👉 [https://termux-x.gitlab.io/termux-x-wiki/](https://termux-x.gitlab.io/termux-x-wiki/)**
 
 ## 📖 关于此项目
 
@@ -22,7 +22,7 @@
 ### 主要贡献流程
 
 1.  **Fork 本仓库**
-    点击页面右上角的 `Fork` 按钮，将此仓库复制到你自己的 Gitee/GitHub 账号下。
+    点击页面右上角的 `Fork` 按钮，将此仓库复制到你自己的 GitLab/GitHub 账号下。
 
 2.  **创建新分支 (Branch)**
     在你的 Fork 仓库中，从 `master` 分支创建一个新的分支来存放你的修改。分支名最好能描述你的工作内容，例如 `add-install-guide` 或 `fix-typo-in-homepage`。
@@ -48,7 +48,7 @@
 
 1.  **克隆你的仓库到本地**
     ```bash
-    git clone https://gitee.com/xheishou/termux-x-wiki.git
+    git clone https://gitlab.com/termux-x/termux-x-wiki.git
     ```
 
 2.  **进入项目目录**
