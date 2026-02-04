@@ -52,7 +52,9 @@ stages:
             git commit -m "Deploy pages"
             git remote set-url origin "https://gitee.com/xheishou/termux-x-wiki.git"
             BASIC="$(printf "%s" "${USER}:${TOKEN}" | base64 | tr -d '\n')"
-            git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages
+            git config --global credential.helper store
+            echo "https://${USER}:${TOKEN}@gitee.com/xheishou/termux-x-wiki.git" > ~/.git-credentials
+            git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages || git push -f origin pages
             echo "DEPLOY_PAGES: done"
             set -x
         # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
