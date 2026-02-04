@@ -22,8 +22,8 @@ stages:
           - ./node-v18.19.0-linux-x64/bin/node node_modules/vitepress/bin/vitepress.js build docs
           - test -d docs/.vitepress/dist
           - set +x
-          - TOKEN="${GITEE_TOKEN:-${GITEE_ACCESS_TOKEN:-${GITEE_PERSONAL_ACCESS_TOKEN:-}}}"
-          - test -n "$TOKEN" || (echo "Missing Gitee token. Please set pipeline secret variable GITEE_TOKEN (or GITEE_ACCESS_TOKEN)." && exit 1)
+          - TOKEN="${PAGES_TOKEN:-${PAGES_ACCESS_TOKEN:-${TOKEN:-}}}"
+          - test -n "$TOKEN" || (echo "Missing token. Please set pipeline secret variable PAGES_TOKEN (recommended)." && exit 1)
           - DIST_TMP="$(mktemp -d)"
           - cp -a docs/.vitepress/dist/. "$DIST_TMP"/
           - git config user.name "gitee-go"
