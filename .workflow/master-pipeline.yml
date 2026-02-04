@@ -1,6 +1,10 @@
 version: '1.0'
 name: master-pipeline
 displayName: MasterPipeline
+variables:
+  global:
+    - PAGES_USER
+    - PAGES_TOKEN
 stages:
   - stage: 
     name: compile
