@@ -1,11 +1,11 @@
-# ZeroTermux Wiki
+# Termux-X Wiki
 
-[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://wiki.zerotermux.dev/)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://xheishou-com.github.io/Termux-X-wiki/)
 [![Powered by VitePress](https://img.shields.io/badge/Powered%20by-VitePress-blueviolet)](https://vitepress.dev/)
 
-欢迎来到 ZeroTermux Wiki 的官方源码仓库！本文档库旨在为 [ZeroTermux](https://github.com/hanxinhao000/ZeroTermux) 用户提供全面、准确的指南、教程和常见问题解答。
+欢迎来到 ZeroTermux Wiki 的官方源码仓库！本文档库旨在为 [ZeroTermux](https://github.com/xheishou-com/Termux-X-wiki) 用户提供全面、准确的指南、教程和常见问题解答。
 
-**在线访问 👉 [https://wiki.zerotermux.dev/](https://wiki.zerotermux.dev/)**
+**在线访问 👉 [https://xheishou-com.github.io/Termux-X-wiki/](https://xheishou-com.github.io/Termux-X-wiki/)**
 
 ## 📖 关于此项目
 
@@ -48,7 +48,7 @@
 
 1.  **克隆你的 Fork 仓库到本地**
     ```bash
-    git clone [https://github.com/你的用户名/zerotermux-wiki.git](https://github.com/你的用户名/zerotermux-wiki.git)
+    git clone https://github.com/xheishou-com/Termux-X-wiki.git
     ```
 
 2.  **进入项目目录**

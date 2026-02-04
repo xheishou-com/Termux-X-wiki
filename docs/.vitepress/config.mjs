@@ -9,12 +9,12 @@ export default defineConfig({
 
   // --- Head Metadata (SEO & Favicon) ---
   head: [
-    ['link', { rel: 'icon', href: '/logo.webp' }],
+    ['link', { rel: 'icon', href: `${base}logo.png` }],
     ['meta', { name: 'keywords', content: 'Termux-X, ZeroTermux, Kali NetHunter, termux, 移动渗透, 安卓终端,黑客，黑客社区，X黑手网，X黑手，黑客网， AI助手, 免Root' }],
     ['meta', { name: 'author', content: 'Termux-X Team' }],
     ['meta', { property: 'og:title', content: 'Termux-X - 移动端终极渗透测试平台' }],
     ['meta', { property: 'og:description', content: '基于ZeroTermux深度定制，一键部署Kali NetHunter，集成AI代码审计与自动化工具。' }],
-    ['meta', { property: 'og:image', content: `${base}logo.webp` }],
+    ['meta', { property: 'og:image', content: `${base}logo.png` }],
   ],
 
   // Deploy base path: '/' for custom domain root
@@ -30,10 +30,10 @@ export default defineConfig({
       provider: 'local'
     },
     editLink: {
-      pattern: 'https://gitlab.com/termux-x/termux-x-wiki/-/edit/master/docs/:path',
-      text: '在 GitLab 上编辑此页'
+      pattern: 'https://github.com/xheishou-com/Termux-X-wiki/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页'
     },
-    logo: `${base}logo.webp`,
+    logo: '/logo.png',
     siteTitle: 'Termux-X 终端',
 
     nav: [

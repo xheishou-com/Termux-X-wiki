@@ -1,11 +1,11 @@
 # Termux-X Wiki
 
-[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://termux-x.gitlab.io/termux-x-wiki/)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://xheishou-com.github.io/Termux-X-wiki/)
 [![Powered by VitePress](https://img.shields.io/badge/Powered%20by-VitePress-blueviolet)](https://vitepress.dev/)
 
-欢迎来到 Termux-X Wiki 的官方源码仓库！本文档库旨在为 [Termux-X](https://gitlab.com/termux-x/termux-x-wiki) 用户提供全面、准确的指南、教程和常见问题解答。
+欢迎来到 Termux-X Wiki 的官方源码仓库！本文档库旨在为 [Termux-X](https://github.com/xheishou-com/Termux-X-wiki) 用户提供全面、准确的指南、教程和常见问题解答。
 
-**在线访问 👉 [https://termux-x.gitlab.io/termux-x-wiki/](https://termux-x.gitlab.io/termux-x-wiki/)**
+**在线访问 👉 [https://xheishou-com.github.io/Termux-X-wiki/](https://xheishou-com.github.io/Termux-X-wiki/)**
 
 ## 📖 关于此项目
 
@@ -22,10 +22,10 @@
 ### 主要贡献流程
 
 1.  **Fork 本仓库**
-    点击页面右上角的 `Fork` 按钮，将此仓库复制到你自己的 GitLab/GitHub 账号下。
+    点击页面右上角的 `Fork` 按钮，将此仓库复制到你自己的 GitHub 账号下。
 
 2.  **创建新分支 (Branch)**
-    在你的 Fork 仓库中，从 `master` 分支创建一个新的分支来存放你的修改。分支名最好能描述你的工作内容，例如 `add-install-guide` 或 `fix-typo-in-homepage`。
+    在你的 Fork 仓库中，从 `main` 分支创建一个新的分支来存放你的修改。分支名最好能描述你的工作内容，例如 `add-install-guide` 或 `fix-typo-in-homepage`。
 
 3.  **进行修改**
     在 `docs` 目录下创建新的 `.md` 文件或修改现有文件。
@@ -33,7 +33,7 @@
     * **内容编写**：请使用标准的 Markdown 语法。你也可以使用 VitePress 提供的[自定义容器](https://vitepress.dev/guide/markdown#custom-containers)来美化页面，如 `:::tip`、`:::warning`、`:::danger` 等。
 
 4.  **提交拉取请求 (Pull Request)**
-    完成修改后，回到你的 Fork 仓库页面，提交一个 Pull Request (PR) 到本仓库的 `master` 分支。请在 PR 中简要说明你做了哪些修改和原因。
+    完成修改后，回到你的 Fork 仓库页面，提交一个 Pull Request (PR) 到本仓库的 `main` 分支。请在 PR 中简要说明你做了哪些修改和原因。
 
 5.  **代码审查与合并**
     我们会尽快审查你的 PR。一旦通过，你的贡献就会被合并到主分支，网站将自动完成部署和更新！
@@ -48,7 +48,7 @@
 
 1.  **克隆你的仓库到本地**
     ```bash
-    git clone https://gitlab.com/termux-x/termux-x-wiki.git
+    git clone https://github.com/xheishou-com/Termux-X-wiki.git
     ```
 
 2.  **进入项目目录**
