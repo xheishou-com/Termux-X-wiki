@@ -9,7 +9,7 @@ export default defineConfig({
 
   // --- Head Metadata (SEO & Favicon) ---
   head: [
-    ['link', { rel: 'icon', href: `${base}logo.webp` }],
+    ['link', { rel: 'icon', href: `${base}logo.png` }],
     ['meta', { name: 'keywords', content: 'Termux-X, ZeroTermux, Kali NetHunter, termux, 移动渗透, 安卓终端,黑客，黑客社区，X黑手网，X黑手，黑客网， AI助手, 免Root' }],
     ['meta', { name: 'author', content: 'Termux-X Team' }],
     ['meta', { property: 'og:title', content: 'Termux-X - 移动端终极渗透测试平台' }],
@@ -33,7 +33,7 @@ export default defineConfig({
       pattern: 'https://gitlab.com/termux-x/termux-x-wiki/-/edit/master/docs/:path',
       text: '在 GitLab 上编辑此页'
     },
-    logo: `${base}logo.webp`,
+    logo: `${base}logo.png`,
     siteTitle: 'Termux-X 终端',
 
     nav: [
