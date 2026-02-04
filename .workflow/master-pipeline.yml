@@ -35,8 +35,8 @@ stages:
           - touch .nojekyll
           - git add -A
           - git commit -m "Deploy pages"
-          - git remote set-url origin "https://xheishou:${TOKEN}@gitee.com/xheishou/termux-x-wiki.git"
-          - git push -f origin pages
+          - git remote set-url origin "https://gitee.com/xheishou/termux-x-wiki.git"
+          - git -c http.extraHeader="Authorization: token ${TOKEN}" push -f origin pages
         # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
         artifacts:
             # 构建产物名字，作为产物的唯一标识可向下传递，支持自定义，默认为BUILD_ARTIFACT。在下游可以通过${BUILD_ARTIFACT}方式引用来获取构建物地址
