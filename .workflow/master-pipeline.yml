@@ -20,19 +20,10 @@ stages:
           - ./node-v18.19.0-linux-x64/bin/node ./node-v18.19.0-linux-x64/lib/node_modules/npm/bin/npm-cli.js -v
           - ./node-v18.19.0-linux-x64/bin/node ./node-v18.19.0-linux-x64/lib/node_modules/npm/bin/npm-cli.js install
           - ./node-v18.19.0-linux-x64/bin/node node_modules/vitepress/bin/vitepress.js build docs
-        # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
-        artifacts:
-            # 构建产物名字，作为产物的唯一标识可向下传递，支持自定义，默认为BUILD_ARTIFACT。在下游可以通过${BUILD_ARTIFACT}方式引用来获取构建物地址
-          - name: BUILD_ARTIFACT
-            # 构建产物获取路径，是指代码编译完毕之后构建物的所在路径
-            path:
-              - docs/.vitepress/dist
-      - step: build@nodejs
-        name: deploy_pages_branch
-        displayName: 部署到 pages 分支
-        nodeVersion: 14.16.0
-        commands:
           - test -d docs/.vitepress/dist
+          - set +x
+          - TOKEN="${GITEE_TOKEN:-${GITEE_ACCESS_TOKEN:-${GITEE_PERSONAL_ACCESS_TOKEN:-}}}"
+          - test -n "$TOKEN" || (echo "Missing Gitee token. Please set pipeline secret variable GITEE_TOKEN (or GITEE_ACCESS_TOKEN)." && exit 1)
           - DIST_TMP="$(mktemp -d)"
           - cp -a docs/.vitepress/dist/. "$DIST_TMP"/
           - git config user.name "gitee-go"
@@ -44,8 +35,15 @@ stages:
           - touch .nojekyll
           - git add -A
           - git commit -m "Deploy pages"
+          - git remote set-url origin "https://oauth2:${TOKEN}@gitee.com/xheishou/termux-x-wiki.git"
           - git push -f origin pages
-        dependsOn: build_nodejs
+        # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
+        artifacts:
+            # 构建产物名字，作为产物的唯一标识可向下传递，支持自定义，默认为BUILD_ARTIFACT。在下游可以通过${BUILD_ARTIFACT}方式引用来获取构建物地址
+          - name: BUILD_ARTIFACT
+            # 构建产物获取路径，是指代码编译完毕之后构建物的所在路径
+            path:
+              - docs/.vitepress/dist
       - step: publish@general_artifacts
         name: publish_general_artifacts
         displayName: 上传制品
@@ -53,7 +51,7 @@ stages:
         dependArtifact: BUILD_ARTIFACT
         # 上传到制品库时的制品命名，默认output
         artifactName: output
-        dependsOn: deploy_pages_branch
+        dependsOn: build_nodejs
   - stage: 
     name: release
     displayName: 发布
