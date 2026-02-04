@@ -22,8 +22,9 @@ stages:
           - ./node-v18.19.0-linux-x64/bin/node node_modules/vitepress/bin/vitepress.js build docs
           - test -d docs/.vitepress/dist
           - set +x
-          - TOKEN="${PAGES_TOKEN:-${PAGES_ACCESS_TOKEN:-${TOKEN:-}}}"
-          - test -n "$TOKEN" || (echo "Missing token. Please set pipeline secret variable PAGES_TOKEN (recommended)." && exit 1)
+          - TOKEN="${GITEE_TOKEN:-${GITEE_ACCESS_TOKEN:-${GITEE_PERSONAL_ACCESS_TOKEN:-}}}"
+          - TOKEN="$(printf "%s" "$TOKEN" | tr -d '\r\n')"
+          - test -n "$TOKEN" || (echo "Missing Gitee token. Please set pipeline secret variable GITEE_TOKEN (or GITEE_ACCESS_TOKEN)." && exit 1)
           - DIST_TMP="$(mktemp -d)"
           - cp -a docs/.vitepress/dist/. "$DIST_TMP"/
           - git config user.name "gitee-go"
@@ -36,7 +37,8 @@ stages:
           - git add -A
           - git commit -m "Deploy pages"
           - git remote set-url origin "https://gitee.com/xheishou/termux-x-wiki.git"
-          - git -c http.extraHeader="Authorization: token ${TOKEN}" push -f origin pages
+          - BASIC="$(printf "%s" "xheishou:${TOKEN}" | base64 | tr -d '\n')"
+          - git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages
         # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
         artifacts:
             # 构建产物名字，作为产物的唯一标识可向下传递，支持自定义，默认为BUILD_ARTIFACT。在下游可以通过${BUILD_ARTIFACT}方式引用来获取构建物地址
