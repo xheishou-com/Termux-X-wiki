@@ -39,30 +39,28 @@ stages:
             fi
             API_JSON="$(wget -qO- --header="Authorization: token ${TOKEN}" "https://gitee.com/api/v5/user" 2>/dev/null || true)"
             USER_FROM_TOKEN="$(printf "%s" "$API_JSON" | ./node-v18.19.0-linux-x64/bin/node -e "const fs=require('fs'); try{const j=JSON.parse(fs.readFileSync(0,'utf8')); process.stdout.write(j.login||'');}catch(e){}" 2>/dev/null || true)"
-            USER="${PAGES_USER:-${USER_FROM_TOKEN:-}}"
-            if [ -z "$USER" ]; then
-              USER="xheishou"
-            fi
+            USER="${PAGES_USER:-${USER_FROM_TOKEN:-xheishou}}"
             echo "DEPLOY_PAGES: token_present=1 user=${USER} user_from_token=${USER_FROM_TOKEN:-none}"
-            DIST_TMP="$(mktemp -d)"
-            cp -a docs/.vitepress/dist/. "$DIST_TMP"/
-            git config user.name "gitee-go"
-            git config user.email "gitee-go@noreply"
-            git fetch origin pages || true
-            git checkout --orphan pages
-            find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
-            cp -a "$DIST_TMP"/. .
-            touch .nojekyll
-            git add -A
-            git commit -m "Deploy pages"
-            git remote set-url origin "https://gitee.com/xheishou/termux-x-wiki.git"
+
+            DEPLOY_DIR="$(mktemp -d)"
+            cp -a docs/.vitepress/dist/. "$DEPLOY_DIR"/
+            touch "$DEPLOY_DIR/.nojekyll"
+
+            git -C "$DEPLOY_DIR" init
+            git -C "$DEPLOY_DIR" config user.name "gitee-go"
+            git -C "$DEPLOY_DIR" config user.email "gitee-go@noreply"
+            git -C "$DEPLOY_DIR" remote add origin "https://gitee.com/xheishou/termux-x-wiki.git"
+            git -C "$DEPLOY_DIR" checkout --orphan pages
+            git -C "$DEPLOY_DIR" add -A
+            git -C "$DEPLOY_DIR" commit -m "Deploy pages"
+
             PUSH_OK=0
             for U in "$USER" "$USER_FROM_TOKEN" "oauth2"; do
               if [ -z "$U" ]; then
                 continue
               fi
               BASIC="$(printf "%s" "${U}:${TOKEN}" | base64 | tr -d '\n')"
-              if git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages; then
+              if git -C "$DEPLOY_DIR" -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages; then
                 PUSH_OK=1
                 break
               fi
