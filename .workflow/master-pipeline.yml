@@ -49,9 +49,12 @@ stages:
           - git commit -m "Deploy pages"
           - git remote set-url origin "https://gitee.com/xheishou/termux-x-wiki.git"
           - BASIC="$(printf "%s" "${USER}:${TOKEN}" | base64 | tr -d '\n')"
-          - echo "AUTH_DEBUG: BASIC_LEN=$(printf "%s" "$BASIC" | wc -c | tr -d ' ')"
-          - echo "AUTH_DEBUG: ls-remote pages (should succeed if token has write access):"
-          - git -c http.extraHeader="Authorization: Basic ${BASIC}" ls-remote --heads origin pages || (echo "AUTH_DEBUG: ls-remote failed (auth/permission issue)" && exit 1)
+          - echo "AUTH_DEBUG2: USER=${USER} USER_KEY=${PICKED_USER_KEY:-default} TOKEN_KEY=${PICKED_TOKEN_KEY:-none} TOKEN_LEN_BEFORE=${TOKEN_LEN_BEFORE} TOKEN_LEN_AFTER=${TOKEN_LEN_AFTER}"
+          - echo "AUTH_DEBUG2: TOKEN_FIRST4=$(printf "%s" "$TOKEN" | head -c 4) TOKEN_LAST4=$(printf "%s" "$TOKEN" | tail -c 4)"
+          - echo "AUTH_DEBUG2: ORIGIN_URL=$(git config --get remote.origin.url || true)"
+          - echo "AUTH_DEBUG2: BASIC_LEN=$(printf "%s" "$BASIC" | wc -c | tr -d ' ')"
+          - echo "AUTH_DEBUG2: ls-remote pages (should succeed if token has write access):"
+          - git -c http.extraHeader="Authorization: Basic ${BASIC}" ls-remote --heads origin pages || (echo "AUTH_DEBUG2: ls-remote failed (auth/permission issue)" && exit 1)
           - git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages
         # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
         artifacts:
