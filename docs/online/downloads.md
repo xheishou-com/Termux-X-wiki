@@ -12,12 +12,12 @@
 
 ---
 
-## ZeroTermux 下载 (基础版)
+## ZeroTermux 下载  
 
 **ZeroTermux** 是 Termux-X 的基础项目。
 
 *   **ZeroTermux**: [GitHub Link](https://github.com/hanxinhao000/ZeroTermux)
-*   **ZeroTermux 下载 (旧版存档)**: [链接](https://od.ixcmstudio.cn/repository/main/ZeroTermux/)
+*   **ZeroTermux 下载  **: [链接](https://od.ixcmstudio.cn/repository/main/ZeroTermux/)
 
 ### ⚠️ 免责声明 (Statement)
 
