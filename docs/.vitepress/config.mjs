@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-const base = process.env.VITEPRESS_BASE || '/Termux-x-wiki/'
+const base = process.env.VITEPRESS_BASE || '/Termux-X-wiki/'
 
 export default defineConfig({
   // --- Basic Info ---
@@ -45,7 +45,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://gitlab.com/termux-x/termux-x-wiki' }
+      { icon: 'github', link: 'https://github.com/xheishou-com/Termux-X-wiki' }
     ],
 
     sidebar: [
