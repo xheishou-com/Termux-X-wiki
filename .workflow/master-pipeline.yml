@@ -37,7 +37,8 @@ stages:
               echo "Missing PAGES_TOKEN. 请在 Gitee Go -> 通用变量 中添加 PAGES_TOKEN(勾选密文) 和 PAGES_USER。"
               exit 1
             fi
-            USER_FROM_TOKEN="$(wget -qO- "https://gitee.com/api/v5/user?access_token=${TOKEN}" | ./node-v18.19.0-linux-x64/bin/node -e "const fs=require('fs'); try{const j=JSON.parse(fs.readFileSync(0,'utf8')); process.stdout.write(j.login||'');}catch(e){}" 2>/dev/null || true)"
+            API_JSON="$(wget -qO- --header="Authorization: token ${TOKEN}" "https://gitee.com/api/v5/user" 2>/dev/null || true)"
+            USER_FROM_TOKEN="$(printf "%s" "$API_JSON" | ./node-v18.19.0-linux-x64/bin/node -e "const fs=require('fs'); try{const j=JSON.parse(fs.readFileSync(0,'utf8')); process.stdout.write(j.login||'');}catch(e){}" 2>/dev/null || true)"
             USER="${PAGES_USER:-${USER_FROM_TOKEN:-}}"
             if [ -z "$USER" ]; then
               USER="xheishou"
@@ -55,10 +56,21 @@ stages:
             git add -A
             git commit -m "Deploy pages"
             git remote set-url origin "https://gitee.com/xheishou/termux-x-wiki.git"
-            BASIC="$(printf "%s" "${USER}:${TOKEN}" | base64 | tr -d '\n')"
-            git config --global credential.helper store
-            echo "https://${USER}:${TOKEN}@gitee.com/xheishou/termux-x-wiki.git" > ~/.git-credentials
-            git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages || git push -f origin pages
+            PUSH_OK=0
+            for U in "$USER" "$USER_FROM_TOKEN" "oauth2"; do
+              if [ -z "$U" ]; then
+                continue
+              fi
+              BASIC="$(printf "%s" "${U}:${TOKEN}" | base64 | tr -d '\n')"
+              if git -c http.extraHeader="Authorization: Basic ${BASIC}" push -f origin pages; then
+                PUSH_OK=1
+                break
+              fi
+            done
+            if [ "$PUSH_OK" -ne 1 ]; then
+              echo "DEPLOY_PAGES: push failed (check PAGES_TOKEN is a valid PAT with repo write, and PAGES_USER is your login/email)"
+              exit 1
+            fi
             echo "DEPLOY_PAGES: done"
             set -x
         # 非必填字段，开启后表示将构建产物暂存，但不会上传到制品库中，7天后自动清除
