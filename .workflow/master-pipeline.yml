@@ -3,7 +3,8 @@ name: master-pipeline
 displayName: MasterPipeline
 variables:
   global:
-    - GITEE_TOKEN
+    - PAGES_PUSH_USERNAME
+    - PAGES_PUSH_TOKEN
 stages:
   - stage: 
     name: compile
@@ -25,15 +26,13 @@ stages:
           - ./node-v18.19.0-linux-x64/bin/node node_modules/vitepress/bin/vitepress.js build docs
           - test -d docs/.vitepress/dist
           - set +x
-          - USER="${GITEE_TOKEN_USERNAME:-xheishou}"
-          - TOKEN="${GITEE_TOKEN_PASSWORD:-${GITEE_TOKEN:-${GITEE_ACCESS_TOKEN:-${GITEE_PERSONAL_ACCESS_TOKEN:-}}}}"
+          - USER="${PAGES_PUSH_USERNAME:-xheishou}"
+          - TOKEN="${PAGES_PUSH_TOKEN:-}"
           - TOKEN_LEN_BEFORE="$(printf "%s" "$TOKEN" | wc -c | tr -d ' ')"
           - TOKEN="$(printf "%s" "$TOKEN" | tr -d '\r\n')"
           - TOKEN_LEN_AFTER="$(printf "%s" "$TOKEN" | wc -c | tr -d ' ')"
-          - test -n "$TOKEN" || (echo "Missing Gitee token. Please set pipeline secret variable GITEE_TOKEN (or GITEE_ACCESS_TOKEN)." && exit 1)
-          - echo "AUTH_DEBUG: USER=${USER} TOKEN_LEN_BEFORE=${TOKEN_LEN_BEFORE} TOKEN_LEN_AFTER=${TOKEN_LEN_AFTER}"
-          - echo "AUTH_DEBUG: HAS_GITEE_TOKEN_USERNAME=$(test -n "${GITEE_TOKEN_USERNAME:-}" && echo 1 || echo 0) HAS_GITEE_TOKEN_PASSWORD=$(test -n "${GITEE_TOKEN_PASSWORD:-}" && echo 1 || echo 0) HAS_GITEE_TOKEN=$(test -n "${GITEE_TOKEN:-}" && echo 1 || echo 0)"
-          - echo "AUTH_DEBUG: TOKEN_FIRST4=$(printf "%s" "$TOKEN" | head -c 4) TOKEN_LAST4=$(printf "%s" "$TOKEN" | tail -c 4)"
+          - test -n "$TOKEN" || (echo "Missing PAGES_PUSH_TOKEN. Please set it in 仓库 -> 管理 -> 环境变量管理, and declare it in pipeline variables." && exit 1)
+          - echo "AUTH_DEBUG: USER=${USER} TOKEN_LEN_BEFORE=${TOKEN_LEN_BEFORE} TOKEN_LEN_AFTER=${TOKEN_LEN_AFTER} HAS_PAGES_PUSH_TOKEN=$(test -n "${PAGES_PUSH_TOKEN:-}" && echo 1 || echo 0)"
           - DIST_TMP="$(mktemp -d)"
           - cp -a docs/.vitepress/dist/. "$DIST_TMP"/
           - git config user.name "gitee-go"
