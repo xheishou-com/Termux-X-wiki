@@ -3,7 +3,7 @@ image: node:18-bullseye
 pages:
   stage: deploy
   variables:
-    VITEPRESS_BASE: "/termux-x-wiki/"
+    VITEPRESS_BASE: "/Termux-x-wiki/"
   cache:
     key:
       files:

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-const base = process.env.VITEPRESS_BASE || '/termux-x-wiki/'
+const base = process.env.VITEPRESS_BASE || '/Termux-x-wiki/'
 
 export default defineConfig({
   // --- Basic Info ---
