@@ -1,10 +1,6 @@
 version: '1.0'
 name: master-pipeline
 displayName: MasterPipeline
-variables:
-  global:
-    - PAGES_PUSH_USERNAME
-    - PAGES_PUSH_TOKEN
 stages:
   - stage: 
     name: compile
@@ -25,14 +21,21 @@ stages:
           - ./node-v18.19.0-linux-x64/bin/node ./node-v18.19.0-linux-x64/lib/node_modules/npm/bin/npm-cli.js install
           - ./node-v18.19.0-linux-x64/bin/node node_modules/vitepress/bin/vitepress.js build docs
           - test -d docs/.vitepress/dist
+          - echo "AUTH_DEBUG: env keys (filtered):"
+          - env | cut -d= -f1 | grep -E '(^GITEE|_GITEE|TOKEN|CRED|CREDENTIAL)' | sort | uniq
           - set +x
-          - USER="${PAGES_PUSH_USERNAME:-xheishou}"
-          - TOKEN="${PAGES_PUSH_TOKEN:-}"
+          - PICKED_USER_KEY=""
+          - PICKED_TOKEN_KEY=""
+          - USER=""
+          - TOKEN=""
+          - for k in GITEE_TOKEN_USERNAME GITEE_USERNAME GITEE_USER CRED_GITEE_TOKEN_USERNAME CREDENTIAL_GITEE_TOKEN_USERNAME; do v="$(eval "printf \"%s\" \"\${$k-}\"")"; if [ -n "$v" ]; then USER="$v"; PICKED_USER_KEY="$k"; break; fi; done
+          - for k in GITEE_TOKEN_PASSWORD GITEE_TOKEN GITEE_PASSWORD GITEE_ACCESS_TOKEN GITEE_PERSONAL_ACCESS_TOKEN CRED_GITEE_TOKEN_PASSWORD CREDENTIAL_GITEE_TOKEN_PASSWORD; do v="$(eval "printf \"%s\" \"\${$k-}\"")"; if [ -n "$v" ]; then TOKEN="$v"; PICKED_TOKEN_KEY="$k"; break; fi; done
+          - USER="${USER:-xheishou}"
           - TOKEN_LEN_BEFORE="$(printf "%s" "$TOKEN" | wc -c | tr -d ' ')"
           - TOKEN="$(printf "%s" "$TOKEN" | tr -d '\r\n')"
           - TOKEN_LEN_AFTER="$(printf "%s" "$TOKEN" | wc -c | tr -d ' ')"
-          - test -n "$TOKEN" || (echo "Missing PAGES_PUSH_TOKEN. Please set it in 仓库 -> 管理 -> 环境变量管理, and declare it in pipeline variables." && exit 1)
-          - echo "AUTH_DEBUG: USER=${USER} TOKEN_LEN_BEFORE=${TOKEN_LEN_BEFORE} TOKEN_LEN_AFTER=${TOKEN_LEN_AFTER} HAS_PAGES_PUSH_TOKEN=$(test -n "${PAGES_PUSH_TOKEN:-}" && echo 1 || echo 0)"
+          - test -n "$TOKEN" || (echo "Missing token in pipeline env. Please ensure Gitee Go 凭证管理里创建的凭证能注入到流水线（用户名/密码），或在流水线环境变量里提供 token。" && exit 1)
+          - echo "AUTH_DEBUG: USER=${USER} USER_KEY=${PICKED_USER_KEY:-default} TOKEN_KEY=${PICKED_TOKEN_KEY:-none} TOKEN_LEN_BEFORE=${TOKEN_LEN_BEFORE} TOKEN_LEN_AFTER=${TOKEN_LEN_AFTER}"
           - DIST_TMP="$(mktemp -d)"
           - cp -a docs/.vitepress/dist/. "$DIST_TMP"/
           - git config user.name "gitee-go"
