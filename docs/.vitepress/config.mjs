@@ -51,6 +51,7 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Termux-X 介绍指南',
+        link: '/guide/introduction-overview',
         items: [
           { text: '深度介绍', link: '/guide/introduction' },
           { text: '更新日志', link: '/guide/changelog' },
@@ -59,7 +60,7 @@ export default defineConfig({
       },
       {
         text: 'Termux-X 入门指南',
-        collapsed: false,
+        link: '/guide/getting-started-intro',
         items: [
           { text: '快速开始', link: '/guide/getting-started' },
           { text: '安装教程', link: '/guide/installation' },
@@ -69,6 +70,7 @@ export default defineConfig({
       },
       {
         text: 'Termux-X AI助手',
+        link: '/guide/ai-introduction',
         items: [
           { text: 'AI配置', link: '/guide/ai-configuration' },
           { text: '命令辅助', link: '/guide/command-assistant' },
@@ -79,9 +81,10 @@ export default defineConfig({
       },
       {
         text: 'Termux-X Kali NetHunter',
+        link: '/guide/nethunter-overview',
         items: [
-          { text: '安装/重装', link: '/guide/getting-started' },
-          { text: '启动终端', link: '/guide/installation' },
+          { text: '安装/重装', link: '/guide/nethunter-install' },
+          { text: '启动终端', link: '/guide/nethunter-start' },
           { text: '启动桌面', link: '/guide/start-desktop' },
           { text: '停止桌面', link: '/guide/start-nethunter' },
           { text: '设置密码', link: '/guide/nethunter-terminal' },
