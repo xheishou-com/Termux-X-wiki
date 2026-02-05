@@ -10,7 +10,7 @@ hero:
       text: 🚀 立即下载
       link: /online/downloads
     - theme: alt
-      text: 📖 使用文档
+      text: 📖 使用手册
       link: /guide/introduction
 
 features:
