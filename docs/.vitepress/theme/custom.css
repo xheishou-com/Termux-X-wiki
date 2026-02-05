@@ -98,6 +98,14 @@ html {
 .VPButton.alt {
   border-radius: 2px;
   border: 1px solid var(--vp-c-text-2);
+  color: var(--vp-c-text-1);
+  background-color: var(--vp-c-bg);
+}
+
+.VPButton.alt:hover {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+  background-color: rgba(0, 243, 255, 0.05);
 }
 
 /* Feature Cards */
