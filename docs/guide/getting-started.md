@@ -16,6 +16,7 @@
 - [快速开始](/guide/getting-started)
 - [安装教程](/guide/installation)
 - [首次启动与其的故障排除](/guide/first-install-error)
+- [使用技巧 (Tips)](/guide/usage-tips)
 
 ---
 

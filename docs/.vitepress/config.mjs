@@ -59,10 +59,12 @@ export default defineConfig({
       },
       {
         text: 'Termux-X 入门指南',
+        collapsed: false,
         items: [
           { text: '快速开始', link: '/guide/getting-started' },
           { text: '安装教程', link: '/guide/installation' },
-          { text: '首次启动与其的故障排除', link: '/guide/first-install-error' }
+          { text: '首次启动与其的故障排除', link: '/guide/first-install-error' },
+          { text: '使用技巧', link: '/guide/usage-tips' }
         ]
       },
       {

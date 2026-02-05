@@ -132,6 +132,43 @@
 
 *   **彻底重置：** 如果故障模式也无法进入，请清除应用数据并重新安装。
 
+### 7. Process completed (code 1) - 权限不足/登录失败
+
+**现象描述：** 终端启动后显示 `exec("/data/data/com.termux/files/usr/bin/login"): Permission denied`，随后提示 `[Process completed (code 1) - press Enter]`。
+
+![](/img/Termux-X/29.png)
+
+**原因：**
+*   **文件权限丢失：** 核心系统文件（如 `/bin/login`）的可执行权限被意外移除（可能由某些清理软件误删或系统更新导致）。
+*   **SELinux 限制：** 在部分魔改系统（如某些深度定制的 ROM）上，SELinux 策略可能阻止了 Termux 在私有目录下执行二进制文件。
+*   **Android 版本限制：** Android 10+ 的 W^X 策略限制（但在 Termux-X 中通常已处理，极少见）。
+
+**解决方法：**
+1.  **尝试 Failsafe 模式：**
+    *   参照上文“Process completed (code 255)”的方法，尝试进入 **Failsafe** 模式。
+    *   如果能进入，执行 `chmod +x $PREFIX/bin/*` 尝试修复权限。
+2.  **重装应用（推荐）：**
+    *   这种情况通常意味着底层环境已损坏。最快的方法是**卸载应用**，并重新安装。
+    *   *注意*：卸载前如果需要备份数据，请尝试通过电脑连接手机，查看 `/sdcard/xinhao/` 目录下是否有重要数据。
+
+3.  **使用 ADB 强制卸载（针对残留）：**
+    如果普通卸载后重装依然报错，可能是因为存在残留数据（如 Shared User ID 问题）。请连接电脑使用 ADB 清理：
+    ```bash
+    # 强制卸载当前用户下的应用
+    adb shell pm uninstall --user 0 com.termux
+    # 完全卸载
+    adb shell pm uninstall com.termux
+    ```
+
+4.  **清除共享用户数据（终极方案）：**
+    如果上述方法无效，尝试清除共享用户 ID 数据后再重装：
+    ```bash
+    # 清除应用数据
+    adb shell pm clear com.termux
+    # 清除共享用户ID数据（如果有）
+    adb shell pm clear com.termux.shared_user_id
+    ```
+    执行完上述清理操作后，再重新安装 APK。
  
 
 ---
