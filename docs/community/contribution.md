@@ -13,7 +13,7 @@ Termux-X 及其 Wiki 是一个开放的社区项目，我们非常欢迎每一�
 如果您编写了实用的 Shell/Python 脚本，或者移植了新的 Linux 工具：
 *   欢迎提交到我们的 **公共仓库**。
 *   请在 [GitHub Discussions](https://github.com/xheishou-com/Termux-X-wiki/discussions) 或 [Termux-X 论坛](/online/forum) 发帖分享。
-*   优秀的内容将被收录到官方 Wiki 的 [在线脚本](/online/scripts) 或 [下载站](/online/downloads) 中。
+*   优秀的内容将被收录到官方 Wiki 的 [在线脚本](/online/scripts) 或 [下载站](/online/downloadsss) 中。
 
 ### 3. 反馈 Bug与建议
 *   如果您在使用 Termux-X App 过程中遇到闪退、报错或功能异常。
@@ -22,6 +22,11 @@ Termux-X 及其 Wiki 是一个开放的社区项目，我们非常欢迎每一�
     *   手机型号与 Android 版本
     *   Termux-X 版本号
     *   复现步骤与报错截图
+
+### 4. 社区交流与反馈
+除了 GitHub，您还可以通过以下方式加入我们的社区，进行更实时的交流与分享：
+*   **X黑手技术交流频道**: [点击加入](https://pd.qq.com/s/1gc43z49k?b=9) (QQ频道)
+*   **X黑手社区**: [访问论坛](https://bbs.x10001.com/forum/90.html)
 
 ## 🏆 贡献者致谢
 

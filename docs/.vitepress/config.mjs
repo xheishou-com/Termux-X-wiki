@@ -1,54 +1,10 @@
 import { defineConfig } from 'vitepress'
+import { advancedSidebar } from './advanced-config.mjs'
+
 
 const base = process.env.VITEPRESS_BASE || '/'
 
-export default defineConfig({
-  // --- Basic Info ---
-  title: 'Termux-X 终端 - 移动端终极渗透测试平台',
-  description: '免Root运行Kali NetHunter，内置AI智能助手，移动端渗透测试神器。Termux-X 官方文档与下载。',
-
-  // --- Head Metadata (SEO & Favicon) ---
-  head: [
-    ['link', { rel: 'icon', href: `${base}logo.png` }],
-    ['meta', { name: 'keywords', content: 'Termux-X, ZeroTermux, Kali NetHunter, termux, 移动渗透, 安卓终端,黑客，黑客社区，X黑手网，X黑手，黑客网， AI助手, 免Root' }],
-    ['meta', { name: 'author', content: 'Termux-X Team' }],
-    ['meta', { property: 'og:title', content: 'Termux-X - 移动端终极渗透测试平台' }],
-    ['meta', { property: 'og:description', content: '基于ZeroTermux深度定制，一键部署Kali NetHunter，集成AI代码审计与自动化工具。' }],
-    ['meta', { property: 'og:image', content: `${base}logo.png` }],
-  ],
-
-  // Deploy base path: '/' for custom domain root
-  base,
-
-  // --- Core Config ---
-  cleanUrls: true,
-  ignoreDeadLinks: true,
-
-  // --- Theme Config ---
-  themeConfig: {
-    search: {
-      provider: 'local'
-    },
-    editLink: {
-      pattern: 'https://github.com/xheishou-com/Termux-X-wiki/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页'
-    },
-    logo: '/logo.png',
-    siteTitle: 'Termux-X 终端',
-
-    nav: [
-      { text: '首页', link: '/' },
-      { text: '深度介绍', link: '/guide/introduction' },
-      { text: '更新日志', link: '/guide/changelog' },
-      { text: '下载', link: '/online/downloads' },
-      { text: '投稿', link: '/community/contribution' },
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/xheishou-com/Termux-X-wiki' }
-    ],
-
-    sidebar: [
+const mainSidebar = [
       {
         text: 'Termux-X 介绍指南',
         link: '/guide/introduction-overview',
@@ -141,23 +97,23 @@ export default defineConfig({
         items: [
           { text: '在线脚本', link: '/online/scripts' },
           { text: '社区论坛', link: '/online/forum' },
-          { text: '下载站', link: '/online/downloads' },
+          { text: '下载站', link: '/online/downloadsss' },
           { text: '公共仓库', link: '/online/public-repo' },
-          { text: '反馈建议', link: '/features/x11/install' }
+          { text: '反馈建议', link: '/community/feedback' }
         ]
       },
       {
         text: 'Termux-X 美化/UI 功能',
         collapsed: false,
         items: [
-          { text: '修改欢迎语', link: '/online/scripts' },
+          { text: '修改欢迎语', link: '/features/ui/welcome-message' },
           { text: '美化设置', link: '/features/ui/beautify-settings' },
           { text: '字体设置', link: '/features/ui/font-settings' },
           { text: '全屏模式', link: '/features/ui/fullscreen-mode' },
           { text: '雪花', link: '/features/ui/animations' },
-          { text: '底部键盘', link: '/features/ui/video-background' },
-          { text: '粒子动画', link: '/features/ui/video-background' },
-          { text: '清空美化', link: '/features/ui/video-background' }
+          { text: '底部键盘', link: '/features/ui/extra-keys' },
+          { text: '粒子动画', link: '/features/ui/animations' },
+          { text: '清空美化', link: '/features/ui/clear-style' }
         ]
       },
       {
@@ -203,7 +159,59 @@ export default defineConfig({
 
         ]
       }
+]
+
+export default defineConfig({
+  // --- Basic Info ---
+  title: 'Termux-X 终端 - 移动端终极渗透测试平台',
+  description: '免Root运行Kali NetHunter，内置AI智能助手，移动端渗透测试神器。Termux-X 官方文档与下载。',
+
+  // --- Head Metadata (SEO & Favicon) ---
+  head: [
+    ['link', { rel: 'icon', href: `${base}logo.png` }],
+    ['meta', { name: 'keywords', content: 'Termux-X, ZeroTermux, Kali NetHunter, termux, 移动渗透, 安卓终端,黑客，黑客社区，X黑手网，X黑手，黑客网， AI助手, 免Root' }],
+    ['meta', { name: 'author', content: 'Termux-X Team' }],
+    ['meta', { property: 'og:title', content: 'Termux-X - 移动端终极渗透测试平台' }],
+    ['meta', { property: 'og:description', content: '基于ZeroTermux深度定制，一键部署Kali NetHunter，集成AI代码审计与自动化工具。' }],
+    ['meta', { property: 'og:image', content: `${base}logo.png` }],
+  ],
+
+  // Deploy base path: '/' for custom domain root
+  base,
+
+  // --- Core Config ---
+  cleanUrls: true,
+  ignoreDeadLinks: true,
+
+  // --- Theme Config ---
+  themeConfig: {
+    search: {
+      provider: 'local'
+    },
+    editLink: {
+      pattern: 'https://github.com/xheishou-com/Termux-X-wiki/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页'
+    },
+    logo: '/logo.png',
+    siteTitle: 'Termux-X 终端',
+
+    nav: [
+      { text: '首页', link: '/' },
+      { text: '使用手册', link: '/guide/introduction-overview' },
+      { text: '进阶玩法', link: '/advanced/overview' },
+      { text: '更新日志', link: '/guide/changelog' },
+      { text: '下载', link: '/online/downloads' },
+      { text: '投稿', link: '/community/contribution' },
     ],
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/xheishou-com/Termux-X-wiki' }
+    ],
+
+    sidebar: {
+      '/advanced/': advancedSidebar,
+      '/': mainSidebar
+    },
 
     footer: {
       message: 'Termux-X -xheishou.com- Based on ZeroTermux. Released under GPL v2.0.'

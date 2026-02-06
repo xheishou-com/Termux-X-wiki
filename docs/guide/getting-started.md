@@ -94,24 +94,24 @@ Termux-X 深度集成了 Kali NetHunter，为您在移动设备上提供强大�
 
 ---
 
-## � Termux-X 线上功能
+## 🌐 Termux-X 线上功能
 - [在线脚本](/online/scripts)
 - [社区论坛](/online/forum)
-- [下载站](/online/downloads)
+- [下载站](/online/downloadsss)
 - [公共仓库](/online/public-repo)
-- [反馈建议](/features/x11/install)
+- [反馈建议](/community/feedback)
 
 ---
 
 ## 🎨 Termux-X 美化/UI 功能
-- [修改欢迎语](/online/scripts)
+- [修改欢迎语](/features/ui/welcome-message)
 - [美化设置](/features/ui/beautify-settings)
 - [字体设置](/features/ui/font-settings)
 - [全屏模式](/features/ui/fullscreen-mode)
 - [雪花](/features/ui/animations)
-- [底部键盘](/features/ui/video-background)
-- [粒子动画](/features/ui/video-background)
-- [清空美化](/features/ui/video-background)
+- [底部键盘](/features/ui/extra-keys)
+- [粒子动画](/features/ui/animations)
+- [清空美化](/features/ui/clear-style)
 
 ---
 

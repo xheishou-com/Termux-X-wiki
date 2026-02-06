@@ -11,7 +11,7 @@ hero:
       link: /online/downloads
     - theme: alt
       text: 📖 使用手册
-      link: /guide/introduction
+      link: /guide/introduction-overview
 
 features:
   - title: ⚡ 免Root Kali NetHunter
