@@ -8,7 +8,8 @@ export const advancedSidebar = [
       { text: '自定义脚本开发', link: '/advanced/custom-scripts' },
       { text: 'Termux API 深度集成', link: '/advanced/termux-api' },
       { text: '高级网络配置', link: '/advanced/network-config' },
-      { text: '内核与硬件交互', link: '/advanced/kernel-interaction' }
+      { text: '内核与硬件交互', link: '/advanced/kernel-interaction' },
+      { text: 'Termux-X 开发环境', link: '/advanced/dev-environment' }
     ]
   }
 ]

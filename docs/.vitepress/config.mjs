@@ -52,6 +52,7 @@ const mainSidebar = [
       },
       {
         text: 'Termux-X kali工具集',
+        link: '/features/kali-tools/overview',
         items: [
           { text: '常用kali工具', link: '/features/kali-tools/common-tools' },
           { text: 'Namp', link: '/features/kali-tools/nmap' },
@@ -78,6 +79,7 @@ const mainSidebar = [
       },
       {
         text: 'Termux-X 工具箱',
+        link: '/features/common/toolbox-overview',
         collapsed: false,
         items: [
           { text: 'ADB远程', link: '/features/common/adb-remote' },
@@ -129,10 +131,12 @@ const mainSidebar = [
       },
       {
         text: 'Termux-X   ROOT功能',
+        link: '/features/zt/root-features',
         collapsed: true,
         items: [
           { text: '网络ADB', link: '/features/zt/network-adb' },
-          { text: 'Docker检查', link: '/features/zt/docker-check' }
+          { text: 'Docker检查', link: '/features/zt/docker-check' },
+          { text: 'Frida 逆向 Beerus 框架 (Hook工具)', link: '/features/zt/beerus' }
         ]
       } ,
       {

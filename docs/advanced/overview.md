@@ -10,21 +10,30 @@
 **"终端效率神器。"**
 引入 x-cmd 增强指令集，提供可视化的包管理、自动依赖安装、快速镜像源切换以及增强的系统信息查看功能，让 Termux 体验更上一层楼。
 
-### 2. [自定义脚本开发](/advanced/custom-scripts)
+### 2. [OpenClaw 机器人部署](/advanced/openclaw-bot)
+**"智能交互助手。"**
+部署功能强大的 OpenClaw 机器人，支持多种插件与自定义扩展，助您轻松实现群组管理、自动回复与即时通知。
+
+### 3. [自定义脚本开发](/advanced/custom-scripts)
 **"打造你的专属工具。"**
 学习如何利用 Shell、Python 编写自动化脚本，结合 Termux-X 的特有 API，实现一键部署环境、自动执行渗透任务等功能。
 
-### 3. [Termux API 深度集成](/advanced/termux-api)
+### 4. [Termux API 深度集成](/advanced/termux-api)
 **"连接物理世界。"**
 不仅是终端，更是控制中心。调用摄像头、GPS、指纹识别、传感器等硬件接口，将您的手机转化为强大的物理渗透设备。
 
-### 4. [高级网络配置](/advanced/network-config)
+### 5. [高级网络配置](/advanced/network-config)
 **"掌控流量与连接。"**
 深入了解 iptables 流量转发、透明代理设置、内网穿透（FRP/Ngrok）的高级应用，以及如何构建复杂的网络拓扑。
 
-### 5. [内核与硬件交互](/advanced/kernel-interaction)
+### 6. [内核与硬件交互](/advanced/kernel-interaction)
 **"突破系统限制。"**
 探索内核模块加载、CPU 频率控制、USB 外设（如无线网卡、SDR 设备）的挂载与驱动，释放硬件的全部性能。
+
+### 7. [Termux-X 开发环境](/advanced/dev-environment)
+**"移动端编程工作站。"**
+配置全栈开发环境，支持 Python, Node.js, Go, Rust 等主流语言，让您的手机瞬间变身生产力工具。
+
 
 ---
 

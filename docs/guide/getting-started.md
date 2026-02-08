@@ -127,6 +127,7 @@ Termux-X 深度集成了 Kali NetHunter，为您在移动设备上提供强大�
 ## ⚡ Termux-X ROOT功能
 - [网络ADB](/features/zt/network-adb)
 - [Docker检查](/features/zt/docker-check)
+- [ Frida 逆向 Beerus 框架 (Hook工具)](/features/zt/beerus)
 
 ---
 
