@@ -1,14 +1,14 @@
-# ZeroTermux 容器备份/恢复教程
+# Termux-X 容器备份/恢复教程
 
-ZeroTermux支持对容器的备份与恢复教程,允许你在需要时对**当前**容器进行备份.本教程将指导你创建备份.
+Termux-X 支持对容器的备份与恢复教程,允许你在需要时对**当前**容器进行备份.本教程将指导你创建备份.
 
 
 ## 1. 前记
 
-ZeroTermux支持两种备份的方式,在下文都有描述.
+Termux-X 支持两种备份的方式,在下文都有描述.
 
 
-## 2. ZeroTermux默认备份
+## 2. Termux-X默认备份
 
 可在左侧边栏的`常用功能 > 备份/恢复`中找到.
 
@@ -23,7 +23,7 @@ ZeroTermux支持两种备份的方式,在下文都有描述.
 | 兼容性        | 好           | 好             | 好         |
 
 一般推荐使用`tar.gz`格式,如果对体积有特殊要求可以使用`tar.xz`.
-任选一个之后,ZeroTermux会为你以你选择的格式进行备份,请保持ZeroTermux在前台并且保持设备不休眠.
+任选一个之后,Termux-X会为你以你选择的格式进行备份,请保持Termux-X在前台并且保持设备不休眠.
 
 > [!NOTE]
 >
@@ -35,7 +35,7 @@ ZeroTermux支持两种备份的方式,在下文都有描述.
 
 > [!IMPORTANT]
 >
-> 如从[下载站](https://d.icdown.club/)或别的第三方平台下载来的数据包,请确保他们是给ZeroTermux使用的,具体信息请询问包原作者.
+> 如从[下载站](https://down.xheishou.top/)或别的第三方平台下载来的数据包,请确保他们是给Termux-X使用的,具体信息请询问包原作者.
 >
 > 数据包应该放置在`/sdcard/xinhao/data`下
 
@@ -57,11 +57,11 @@ ZeroTermux支持两种备份的方式,在下文都有描述.
 
 ## 2. termux-backup备份
 
-ZeroTermux还支持另一种备份方式,也就是Termux原有的`termux-backup`指令.
+Termux-X 还支持另一种备份方式,也就是Termux原有的`termux-backup`指令.
 
 > [!NOTE]
 >
-> 最新版ZeroTermux已经包含了此工具,如果没有请通过下面命令安装`termux-tools`.
+> 最新版Termux-X已经包含了此工具,如果没有请通过下面命令安装`termux-tools`.
 >
 > ```bash
 > pkg install termux-tools
@@ -103,7 +103,7 @@ Usage: termux-backup [options] [output file]
 termux-backup ~/storage/shared/xinhao/data/backup.tar.gz
 ```
 
-上面的指令会将你的`$PREFIX`备份到`/sdcard/xinhao/data/backup.tar.gz`,但是不同于ZeroTermux自带的备份,你可以使用自行安装的压缩工具,以下是`termux-backup`所调用的归档工具`tar`的1.35版所支持的工具(有些包默认不会安装,需自行解决).
+上面的指令会将你的`$PREFIX`备份到`/sdcard/xinhao/data/backup.tar.gz`,但是不同于Termux-X自带的备份,你可以使用自行安装的压缩工具,以下是`termux-backup`所调用的归档工具`tar`的1.35版所支持的工具(有些包默认不会安装,需自行解决).
 
 | 特性         | gzip (.gz)   | bzip2 (.bz2) | xz (.xz)        | lzip (.lz)    | lzma (.lzma)  | lzop (.lzo)     | zstd (.zst)         |
 | :----------- | :----------- | :----------- | :-------------- | :------------ | :------------ | :-------------- | :------------------ |
@@ -124,7 +124,7 @@ termux-backup ~/storage/shared/xinhao/data/backup.tar.zst
 >
 > 备份期间工具并不会输出太多内容,但如果无十分特殊的情况,你都应该默认他正在工作.
 >
-> 备份期间请将ZeroTermux保留在前台,且保持设备不休眠.
+> 备份期间请将Termux-X保留在前台,且保持设备不休眠.
 >
 > 备份期间可能会卡住很长一段时间,具体多长取决于~~天公作不作美~~你`$PREFIX`资料的大小以及设备的性能.
 
@@ -173,4 +173,4 @@ termux-restore ~/storage/shared/xinhao/data/backup.tar.gz
 exit
 ```
 
-并回车来退出ZeroTermux.再次打开时你的恢复包便正式恢复完成.
+并回车来退出Termux-X.再次打开时你的恢复包便正式恢复完成.

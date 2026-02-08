@@ -42,37 +42,37 @@ const mainSidebar = [
           { text: '安装/重装', link: '/guide/nethunter-install' },
           { text: '启动终端', link: '/guide/nethunter-start' },
           { text: '启动桌面', link: '/guide/start-desktop' },
-          { text: '停止桌面', link: '/guide/start-nethunter' },
-          { text: '设置密码', link: '/guide/nethunter-terminal' },
-          { text: 'Root终端', link: '/guide/nethunter-desktop' },
-          { text: '启动SSH', link: '/guide/set-root-password' },
-          { text: '停止SSH', link: '/guide/install-kali-tools' },
-          { text: '安装Kali工具集', link: '/guide/update-kali-tools' }
+          { text: '停止桌面', link: '/guide/stop-desktop' },
+          { text: '设置密码', link: '/guide/set-vnc-password' },
+          { text: 'Root终端', link: '/guide/root-terminal' },
+          { text: '启动SSH', link: '/features/kali-tools/ssh-service' },
+          { text: '停止SSH', link: '/features/kali-tools/ssh-service' },
+          { text: '安装Kali工具集', link: '/features/kali-tools/install-tools' }
         ]
       },
       {
         text: 'Termux-X kali工具集',
         items: [
-          { text: '常用kali工具', link: '/guide/getting-started' },
-          { text: 'Namp', link: '/guide/installation' },
-          { text: 'Dirb', link: '/guide/first-install-error' },
-          { text: 'Kali换源', link: '/guide/aircrack-ng' },
-          { text: 'Metasploit', link: '/guide/set-root-password' },
-          { text: 'Sqlmap', link: '/guide/install-kali-tools' },
-          { text: 'Seeker', link: '/guide/update-kali-tools' },
-          { text: 'Camphish', link: '/guide/burp-suite' }
+          { text: '常用kali工具', link: '/features/kali-tools/common-tools' },
+          { text: 'Namp', link: '/features/kali-tools/nmap' },
+          { text: 'Dirb', link: '/features/kali-tools/dirb' },
+          { text: 'Kali换源', link: '/features/kali-tools/source-switching' },
+          { text: 'Metasploit', link: '/features/kali-tools/metasploit' },
+          { text: 'Sqlmap', link: '/features/kali-tools/sqlmap' },
+          { text: 'Seeker', link: '/features/kali-tools/seeker' },
+          { text: 'Camphish', link: '/features/kali-tools/camphish' }
         ]
       },
             {
         text: 'Termux功能',
         items: [
           { text: 'X11环境', link: '/features/x11/settings' },
-          { text: '启动桌面', link: '/guide/installation' },
-          { text: '停止桌面', link: '/guide/first-install-error' },
+          { text: '启动桌面', link: '/features/x11/start-desktop' },
+          { text: '停止桌面', link: '/features/x11/stop-desktop' },
           { text: '切换换源', link: '/features/common/source-switching' },
-          { text: '设置密码', link: '/guide/getting-started' },
-          { text: '启动SSH', link: '/guide/set-root-password' },
-          { text: '停止SSH', link: '/guide/install-kali-tools' },
+          { text: '设置密码', link: '/features/common/set-password' },
+          { text: '启动SSH', link: '/features/common/ssh' },
+          { text: '停止SSH', link: '/features/common/ssh' },
           { text: '安装多种Linux', link: '/features/common/linux-distros' }
         ]
       },
@@ -80,15 +80,15 @@ const mainSidebar = [
         text: 'Termux-X 工具箱',
         collapsed: false,
         items: [
-          { text: 'ADB远程', link: '/features/common/source-switching' },
+          { text: 'ADB远程', link: '/features/common/adb-remote' },
           { text: '容器切换', link: '/features/common/container-switching' },
           { text: '备份/恢复', link: '/features/common/backup-restore' },
           { text: 'QEMU', link: '/features/common/qemu' },
-          { text: 'SSH连接', link: '/features/common/moe-all-in-one' },
-          { text: 'webshell', link: '/features/common/webshell' },
-          { text: 'cobalt Strike', link: '/features/common/cobalt-strike' },
+          { text: 'SSH连接', link: '/features/common/ssh-connect' },
+          { text: 'Webshell', link: '/features/common/webshell' },
+          { text: 'Cobalt Strike', link: '/features/common/cobalt-strike' },
           { text: '定时任务', link: '/features/common/scheduled-tasks' },
-          { text: '远程协助', link: '/features/common/zt-settings' }
+          { text: '远程协助', link: '/features/common/remote-assistance' }
         ]
       },
       {
@@ -121,7 +121,7 @@ const mainSidebar = [
         collapsed: true,
         items: [
           { text: 'VNC', link: '/features/zt/vnc' },
-          { text: 'ZT设置', link: '/features/ui/beautify-settings' },
+          { text: 'ZT设置', link: '/features/zt/settings' },
           { text: '打开目录', link: '/features/zt/open-directory' },
           { text: '开机启动', link: '/features/zt/startup' },
           { text: '语言切换', link: '/features/zt/language-switching' }
@@ -131,32 +131,27 @@ const mainSidebar = [
         text: 'Termux-X   ROOT功能',
         collapsed: true,
         items: [
-          { text: '网络ADB', link: '/features/zt/zero-functions' },
-          { text: '关闭网络ADB', link: '/features/zt/vnc' },
-          { text: 'Docker检查', link: '/features/zt/custom-commands' }
+          { text: '网络ADB', link: '/features/zt/network-adb' },
+          { text: 'Docker检查', link: '/features/zt/docker-check' }
         ]
       } ,
       {
         text: 'Termux-X   双击窗口工具箱',
         collapsed: true,
         items: [
-          { text: '命令定义', link: '/features/zt/language-switching' },
-          { text: '帮助', link: '/features/zt/create-shortcut' },
-          { text: '安装模块', link: '/features/zt/zero-functions' },
-          { text: '默认启动文件', link: '/features/zt/vnc' },
-          { text: '编辑启动文件', link: '/features/zt/custom-commands' },
-          { text: '内置键盘', link: '/features/zt/sms-call' },
-          { text: '浏览器终端', link: '/features/zt/open-directory' },
-          { text: '网络Linux目录', link: '/features/zt/startup' },
-          { text: '启动FlieBrowser', link: '/features/zt/experimental' },
-          { text: '停止FlieBrowser,', link: '/features/zt/stop-filebrowser' },
-          { text: 'X86 Alpine', link: '/features/zt/open-filebrowser' },
-          { text: 'Ftp服务器', link: '/features/zt/ftp-server' },
-          { text: '常用快捷方式', link: '/features/zt/start-ftp-server' },
-          { text: '自定义快捷方式', link: '/features/zt/stop-ftp-server' },
-          { text: '创建数据包信息', link: '/features/zt/create-package-info' },
-          { text: '卸载', link: '/features/zt/create-shortcut' }
-
+          { text: '双击工具箱介绍', link: '/features/zt/toolbox' },
+          { text: '安装模块', link: '/features/zt/toolbox/install-module' },
+          { text: '默认启动文件', link: '/features/zt/toolbox/default-startup' },
+          { text: '编辑启动文件', link: '/features/zt/toolbox/edit-startup' },
+          { text: '内置键盘', link: '/features/zt/toolbox/builtin-keyboard' },
+          { text: '浏览器终端', link: '/features/zt/toolbox/browser-terminal' },
+          { text: '网络Linux目录', link: '/features/zt/toolbox/file-browser' },
+          { text: 'X86 Alpine', link: '/features/zt/toolbox/x86-alpine' },
+          { text: 'FTP服务', link: '/features/zt/toolbox/ftp-server' },
+          { text: '常用快捷方式', link: '/features/zt/toolbox/common-shortcuts' },
+          { text: '自定快捷方式', link: '/features/zt/toolbox/custom-shortcuts' },
+          { text: '创建数据包信息', link: '/features/zt/toolbox/package-info' },
+          { text: '卸载', link: '/features/zt/toolbox/uninstall' }
         ]
       }
 ]

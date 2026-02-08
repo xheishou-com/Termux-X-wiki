@@ -16,50 +16,8 @@ Termux-X 内置了一键安装 Linux 发行版的功能，这是最简单快捷�
 4.  **选择发行版**：在弹出的菜单中，您可以选择 Ubuntu, Kali, Debian, CentOS, Fedora 等热门发行版。
 5.  **自动安装**：系统会自动下载并配置所需的脚本和文件。
 
-![](/img/tool/5.jpg)
-
 > **💡 提示**：此方法本质上是自动下载并运行 `Termux-Linux` 脚本，适合不想手动输入命令的用户。
 
-### 📜 常用启动命令速查
-
-如果您使用 Termux-Linux 脚本安装了系统，可以使用以下命令快速启动：
-
-#### Ubuntu
-```bash
-cd ~/Termux-Linux/Ubuntu
-./start-ubuntu.sh
-```
-![](/img/tool/10.png)
-
-#### Kali Linux (Light)
-*注：这是轻量级版本，如需完整版 NetHunter 请参考 [Termux-X Kali NetHunter](/guide/nethunter-overview) 模块。*
-```bash
-cd ~/Termux-Linux/Kali
-./start-kali.sh
-```
-![](/img/tool/6.png)
-#### Debian
-```bash
-cd ~/Termux-Linux/Debian
-./start-debian.sh
-```
-![](/img/tool/7.png)
-
-#### CentOS
-*注：CentOS 理论上支持安装宝塔面板，但实际操作难度较大且实用性有限（涉及端口转发等问题）。*
-```bash
-cd ~/Termux-Linux/CentOS
-./start-centos.sh
-```
-![](/img/tool/8.png)
-
-#### Fedora
-*注：启动后建议手动重建缓存：`yum clean all && yum makecache`*
-```bash
-cd ~/Termux-Linux/Fedora
-./start-fedora.sh
-```
-![](/img/tool/9.png)
 
 ---
 
@@ -142,7 +100,47 @@ Termux-X 社区也提供了一些快捷脚本。
 2.  在弹出的对话框中查找 Linux 安装相关的脚本。
 3.  点击直接运行。
 
- 
+### 📜 常用启动命令速查
+
+如果您使用 Termux-Linux 脚本安装了系统，可以使用以下命令快速启动：
+
+#### Ubuntu
+```bash
+cd ~/Termux-Linux/Ubuntu
+./start-ubuntu.sh
+```
+![](/img/tool/10.png)
+
+#### Kali Linux (Light)
+*注：这是轻量级版本，如需完整版 NetHunter 请参考 [Termux-X Kali NetHunter](/guide/nethunter-overview) 模块。*
+```bash
+cd ~/Termux-Linux/Kali
+./start-kali.sh
+```
+![](/img/tool/6.png)
+#### Debian
+```bash
+cd ~/Termux-Linux/Debian
+./start-debian.sh
+```
+![](/img/tool/7.png)
+
+#### CentOS
+*注：CentOS 理论上支持安装宝塔面板，但实际操作难度较大且实用性有限（涉及端口转发等问题）。*
+```bash
+cd ~/Termux-Linux/CentOS
+./start-centos.sh
+```
+![](/img/tool/8.png)
+
+#### Fedora
+*注：启动后建议手动重建缓存：`yum clean all && yum makecache`*
+```bash
+cd ~/Termux-Linux/Fedora
+./start-fedora.sh
+```
+![](/img/tool/9.png)
+---
 
 ## ⚠️ 常见问题 (FAQ)
 
