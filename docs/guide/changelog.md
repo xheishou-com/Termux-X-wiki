@@ -1,5 +1,18 @@
 # 📝 更新日志 (Changelog)
 
+### v0.118.3.60 (2026.02.11)
+*   **新增**：ssh客户端连接
+*   **新增**：cobalt strike(CS) 客户端支持
+*   **新增**：完善termux-x使用手册 地址：[https://termux-x.com](https://termux-x.com)
+*   **新增**：Frida逆向
+*   **优化**：优化众多bug
+  <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+      <img src="../../public/img/common/32.jpg"alt="系统设置-全局策略" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+      <img src="../../public/img/common/33.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+      <img src="../../public/img/common/21.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+    <img src="../../public/img/common/23.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+ </div>
+
 ### v0.118.3.59 (2026.01.30)
 *   **新增**：**AI IDE**  ，内置 **Builder 模式**，支持 AI 自动构建项目、生成文件、即时预览与代码补全
 *   **新增**：**远程协助**功能，支持屏幕共享、远程控制、文字输入等，方便远程调试与协助
