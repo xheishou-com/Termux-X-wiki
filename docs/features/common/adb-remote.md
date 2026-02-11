@@ -67,14 +67,13 @@ Termux-X 内置了强大的图形化 ADB (Android Debug Bridge) 工具箱，允�
 
 如上图所示，连接成功后会在列表中有显示连接成功的设备，此时点击连接成功的设备即可进入控制台。
 
-## 功能展示：
-
 <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
   <img src="/img/common/49.jpg" alt="功能展示1" style="width: 30%; min-width: 200px; border-radius: 8px;" />
   <img src="/img/common/50.jpg" alt="功能展示2" style="width: 30%; min-width: 200px; border-radius: 8px;" />
   <img src="/img/common/51.jpg" alt="功能展示3" style="width: 30%; min-width: 200px; border-radius: 8px;" />
 </div>
 
+## 功能展示：
 <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
   <img src="/img/common/52.jpg" alt="功能展示4" style="width: 30%; min-width: 200px; border-radius: 8px;" />
   <img src="/img/common/53.jpg" alt="功能展示5" style="width: 30%; min-width: 200px; border-radius: 8px;" />
