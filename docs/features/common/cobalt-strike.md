@@ -1,8 +1,7 @@
 # Cobalt Strike 功能与部署指南
 
  Termux-X 现已集成 Cobalt Strike (CS) 客户端支持，提供 **服务器控制台** 和 **本地控制台** 两种模式，帮助安全研究人员在移动端便捷地进行渗透测试工作。
-
-    ![](../../public/img/common/32.png)
+    ![](../../public/img/common/31.png)
 
 ---
 
@@ -108,11 +107,10 @@ A:
 A: 
 1.  **获取 Token**：进入 Web 控制台 -> **系统设置** -> **全局策略**，找到 **Master API Token**，点击复制。
 
-    <p align="center">
-      <img src="../../public/img/common/32.jpg" width="45%" />
-      <img src="../../public/img/common/33.jpg" width="45%" />
-    </p>
-
+    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+      <img src="../../public/img/common/32.png" alt="系统设置-全局策略" style="width: 48%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+      <img src="../../public/img/common/33.png" alt="复制API Token" style="width: 48%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+    </div>
 
 
 2.  **配置客户端**：
@@ -122,7 +120,7 @@ A:
     pip3 install mcp
 
     pip3 install requests
-    
+
     ```
 
     然后，在您的 AI 助手（如 Claude/Cursor）的 MCP 配置文件中，添加以下配置：
