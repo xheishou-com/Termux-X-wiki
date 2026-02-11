@@ -7,10 +7,10 @@
 *   **新增**：Frida逆向
 *   **优化**：优化众多bug
   <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-      <img src="../../public/img/common/32.jpg" alt="系统设置-全局策略" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
-      <img src="../../public/img/common/33.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
-      <img src="../../public/img/common/21.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
-    <img src="../../public/img/common/23.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+      <img src="/img/common/32.jpg" alt="系统设置-全局策略" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+      <img src="/img/common/33.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+      <img src="/img/common/21.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+    <img src="/img/common/23.jpg" alt="复制API Token" style="width: 40%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
  </div>
 
 ### v0.118.3.59 (2026.01.30)

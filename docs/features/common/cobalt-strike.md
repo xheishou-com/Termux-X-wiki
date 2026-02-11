@@ -108,7 +108,7 @@ A:
 1.  **获取 Token**：进入 Web 控制台 -> **系统设置** -> **全局策略**，找到 **Master API Token**，点击复制。
 
     <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-      <img src="../../public/img/common/32.jpg"alt="系统设置-全局策略" style="width: 48%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
+      <img src="../../public/img/common/32.jpg" alt="系统设置-全局策略" style="width: 48%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
       <img src="../../public/img/common/33.jpg" alt="复制API Token" style="width: 48%; min-width: 300px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" />
     </div>
 
