@@ -73,6 +73,9 @@ Termux-X 内置了强大的图形化 ADB (Android Debug Bridge) 工具箱，允�
   <img src="/img/common/49.jpg" alt="功能展示1" style="width: 30%; min-width: 200px; border-radius: 8px;" />
   <img src="/img/common/50.jpg" alt="功能展示2" style="width: 30%; min-width: 200px; border-radius: 8px;" />
   <img src="/img/common/51.jpg" alt="功能展示3" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+</div>
+
+<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
   <img src="/img/common/52.jpg" alt="功能展示4" style="width: 30%; min-width: 200px; border-radius: 8px;" />
   <img src="/img/common/53.jpg" alt="功能展示5" style="width: 30%; min-width: 200px; border-radius: 8px;" />
   <img src="/img/common/54.jpg" alt="功能展示6" style="width: 30%; min-width: 200px; border-radius: 8px;" />
