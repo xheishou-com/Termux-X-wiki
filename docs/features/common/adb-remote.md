@@ -59,11 +59,12 @@ Termux-X 内置了强大的图形化 ADB (Android Debug Bridge) 工具箱，允�
 ![](/img/common/45.png)
 5.  **连接设备**：
 然后如图输入IP+端口连接设备，要注意的是连接端口和配对端口是不一样的，注意分辨，如图来连接图：
-    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-      <img src="/img/common/46.png" alt="已配对设备" style="width: 30%; min-width: 200px; border-radius: 8px;" />
-      <img src="/img/common/47.png" alt="连接设备" style="width: 30%; min-width: 200px; border-radius: 8px;" />
-      <img src="/img/common/48.png" alt="连接成功" style="width: 30%; min-width: 200px; border-radius: 8px;" />
-    </div>
+
+<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+  <img src="/img/common/46.png" alt="已配对设备" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+  <img src="/img/common/47.png" alt="连接设备" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+  <img src="/img/common/48.png" alt="连接成功" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+</div>
 
 如上图所示，连接成功后会在列表中有显示连接成功的设备，此时点击连接成功的设备即可进入控制台。
 
