@@ -6,6 +6,8 @@ Termux-X 内置了强大的图形化 ADB (Android Debug Bridge) 工具箱，允�
 
 在 Termux-X 工具箱中点击 **ADB远程** 图标即可进入。
 
+![](/img/common/42.png)
+
 ## 核心功能
 
 ### 1. 网络 ADB (无需 Root)
@@ -30,3 +32,48 @@ Termux-X 内置了强大的图形化 ADB (Android Debug Bridge) 工具箱，允�
 
 ## 使用提示
 > **注意**：部分高级功能（如直接修改系统设置）可能需要 Root 权限或在“开发者选项”中开启特定权限。
+
+##  连接本机演示：
+
+### 通过无线调试进行配对
+
+1.  **开启无线调试**：
+    首先打开手机系统的 **“开发者选项”**，找到 **“无线调试”** 选项。
+    *   先打开开关。
+2.  **获取配对码**：
+    在无线调试详情页中，点击 **“使用配对码配对设备”**。
+
+3.  **分屏操作 (关键步骤)**：
+    > **⚠️ 重要提示**：一定！一定！一定！要使用 **小窗** 或 **分屏** 模式打开 Termux-X-adb调试。
+    > 因为一旦离开设置页面，配对码可能会刷新失效。
+
+![](/img/common/43.png)
+
+
+4.  **输入配对**：
+    在 Termux-X 的 ADB 远程界面中，输入获取的 **配对码** 和 **端口号**，点击无线配对即可。
+
+![](/img/common/44.jpg)
+
+配对成功过后如图：会有个也配对的设备显示出来， 配对成功后，您会在列表中看到已配对的设备。此时可以关闭分屏模式。
+![](/img/common/45.png)
+5.  **连接设备**：
+然后如图输入IP+端口连接设备，要注意的是连接端口和配对端口是不一样的，注意分辨，如图来连接图：
+    <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+      <img src="/img/common/46.png" alt="已配对设备" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+      <img src="/img/common/47.png" alt="连接设备" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+      <img src="/img/common/48.png" alt="连接成功" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+    </div>
+
+如上图所示，连接成功后会在列表中有显示连接成功的设备，此时点击连接成功的设备即可进入控制台。
+
+功能展示：
+
+<div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+  <img src="/img/common/49.jpg" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+  <img src="/img/common/50.jpg" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+  <img src="/img/common/51.jpg" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+  <img src="/img/common/52.jpg" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+  <img src="/img/common/53.jpg" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+  <img src="/img/common/54.jpg" style="width: 30%; min-width: 200px; border-radius: 8px;" />
+</div>

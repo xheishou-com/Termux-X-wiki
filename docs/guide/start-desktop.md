@@ -63,3 +63,59 @@ Termux-X 界面显示如图所示的日志信息并保持状态，表示 VNC 服
 ![](/img/nethunter/15.jpg)
 
 开启后，重启 Termux-X 并重新尝试启动桌面即可。
+
+## 以 Root 权限启动桌面
+
+默认情况下，桌面环境以普通用户身份运行。如果您需要执行特权操作（如 Wi-Fi 渗透测试工具），建议以 Root 身份启动桌面。
+
+**启动命令：**
+```bash
+nh -r kex
+```
+
+**说明：**
+*   `-r` 参数表示以 Root 身份进入容器。
+*   启动后 VNC 连接方式与普通模式相同（端口通常仍为 5901，取决于是否已有其他会话）。
+
+### 启动错误：Could not migrate ... tigervnc
+
+如果您在启动时遇到如下错误提示：
+
+![](/img/common/40.jpg)
+
+**错误信息：**
+> vncserver: Could not migrate /root/.vnc to /root/.config/tigervnc.
+> 启动 KeX 服务器时出错。
+
+**解决方法：**
+
+这是由于旧的 VNC 会话未正常关闭或配置文件冲突导致的。请尝试以下步骤：
+
+1.  **清理旧会话**：
+    在终端中输入以下命令以强制关闭所有 KeX 会话：
+    ```bash
+    nethunter kex kill
+    ```
+2.  **重启会话**：
+    关闭当前 Termux-X 窗口，重新打开一个新的 Termux 会话。
+3.  **重试启动**：
+    再次尝试执行 `nh -r kex` 或点击“启动桌面”按钮。
+4.  **手动修复配置 (进阶)**：
+    如果上述方法无效，请尝试手动创建缺失的配置文件目录：
+    
+    ```bash
+    # 进入 Root 环境
+    nh -r 
+    
+    # 创建配置目录
+    mkdir -p /root/.config/tigervnc
+    
+    # 复制现有配置
+    cp -r /root/.vnc/* /root/.config/tigervnc/
+    
+    # 重新启动 kex
+    kex
+    ```
+    
+    ![](/img/common/41.jpg)
+
