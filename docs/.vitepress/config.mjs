@@ -195,6 +195,9 @@ export default defineConfig({
     siteTitle: 'Termux-X 终端',
 
     nav: [
+      { text: '官网', link: 'https://xheishou.com' },
+      { text: '社区', link: 'https://bbs.x10001.com/forums' },
+      { text: '渗透测试辅助平台', link: '/payloader.html', target: '_blank' },
       { text: '首页', link: '/' },
       { text: '使用手册', link: '/guide/introduction-overview' },
       { text: '进阶玩法', link: '/advanced/overview' },
