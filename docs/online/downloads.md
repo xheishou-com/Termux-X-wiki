@@ -3,7 +3,6 @@
 ## Termux-X 官方下载
 
 *   **Termux-X APP**: [点击下载](https://xheishou.com/xheishou-download)
-*   **Termux-X APP最新开发板**: [点击下载](https://xheishou.com/forum-post/12173.html)
 *   **X黑手社区**: [访问社区](https://xheishou.com/forum/90.html)
 
 ## 开发者资源
